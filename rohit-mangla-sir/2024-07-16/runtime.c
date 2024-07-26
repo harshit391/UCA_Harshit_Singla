@@ -23,7 +23,7 @@ int main() {
 	cpu_time_used = ((double) (end_time - start_time)) / CLOCKS_PER_SEC;
 
 	printf("Sum :- %lld\n", sum);
-	printf("CPU Time Used :- %f seconds\n", cpu_time_used);
+	printf("CPU Time Used :- %f milliseconds\n", cpu_time_used * 1000);
 
 	return 0;
 }
