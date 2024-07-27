@@ -95,7 +95,7 @@ int main() {
 
 	double time_taken_clock = ((double)(end-start)) / CLOCKS_PER_SEC;
 
-	long long millis = after_mil - before_mil;
+	long long millis = (after_mil - before_mil);
 
 	long memo = mend.ru_maxrss - mstart.ru_maxrss;
 
