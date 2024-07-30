@@ -32,6 +32,8 @@ void merge(int * arr, int start, int mid, int end) {
 	for (int p = start; p < end; p++) {
 		arr[p] = result[p - start];
 	}
+
+	free(result);
 }
 
 void divide(int * arr, int start, int end) {
@@ -65,7 +67,7 @@ int main() {
 	getrusage(RUSAGE_SELF, &mstart);
 
 
-	int n = 50000;
+	int n = 500000;
 
 	int * arr = (int * ) malloc (n * sizeof(int));
 
@@ -101,7 +103,8 @@ int main() {
 
 	printf("Time Taken 1 :- %f ms\n", time_taken_clock * 1000);
 	printf("Time Taken 2 :- %llu ms\n", millis);
-	printf("Memory Used :- %ld\n", memo);
+	printf("Memory Used :- %ld KB\n", memo);
 
+	free(arr);
 	return 0;
 }

@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/resource.h>
+#include <time.h>
 
 int main() {
+	srand(time(NULL));
+
 	// Recording The Start of Memory Usage
 	struct rusage usage_start;
 	
 	getrusage(RUSAGE_SELF, &usage_start);
 
 	// Place your code to measure memory usage here
-	int * array = (int *) malloc (1000000 * sizeof (int) );
+	int * array = (int *) malloc (50000 * sizeof (int) );
 
-	for (int i = 0; i < 1000000; i++) {
+	for (int i = 0; i < 50000; i++) {
 		array[i] = i + 1;
 	}
 	
