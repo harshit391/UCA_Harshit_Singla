@@ -1,0 +1,2 @@
+Writing new Contents into file
+Append Content into File
