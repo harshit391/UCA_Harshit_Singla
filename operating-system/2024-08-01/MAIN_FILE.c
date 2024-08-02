@@ -33,7 +33,7 @@ int main() {
 		copyfiles();
 	}
 
-	if (n >= 5) {
+	if (n == 0 || n >= 5) {
 		printf("\nOnly 1 to 4 Allowed\n");
 		return 1;
 	}
