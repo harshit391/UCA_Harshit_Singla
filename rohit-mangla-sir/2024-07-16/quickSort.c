@@ -56,7 +56,8 @@ int main() {
 
 	getrusage(RUSAGE_SELF, &mstart);
 
-	int k = 500000;
+	int k;
+	scanf("%d", &k);
 	
 	int * arr = (int * ) malloc (k * sizeof(int));
 
@@ -64,22 +65,12 @@ int main() {
 		arr[i] = rand();
 	}
 
-	for (int i = 0; i < 5; i++) {
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
-
 	sort(arr, 0, k-1);
 
 	getrusage(RUSAGE_SELF, &mend);
 	end = clock();
 	gettimeofday(&after, NULL);
 	long long after_mill = after.tv_sec*1000LL + after.tv_usec/1000;
-
-	for (int i = 0; i < 5; i++) {
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
 
 	double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
 

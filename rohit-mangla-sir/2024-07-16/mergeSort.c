@@ -49,10 +49,10 @@ void divide(int * arr, int start, int end) {
 	merge(arr, start, mid, end);
 }
 
-int main() {
+void sortMerge(int n) {
 	
-	srand(time(NULL));
-	
+	srand(time(NULL));	
+
 	struct rusage mstart, mend;
 
 	clock_t start, end;
@@ -66,27 +66,13 @@ int main() {
 
 	getrusage(RUSAGE_SELF, &mstart);
 
-
-	int n = 500000;
-
 	int * arr = (int * ) malloc (n * sizeof(int));
 
 	for (int i = 0; i < n; i++) {
 		arr[i] = rand();
 	}
 
-	for (int i = 0; i < 10; i++) {
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
-
 	divide(arr, 0, n);
-
-	for (int i = 0; i < 10; i++) {
-		printf("%d ", arr[i]);
-	}
-
-	printf("\n");
 
 	gettimeofday(&after, NULL);
 	long long after_mil = after.tv_sec * 1000LL + after.tv_usec/1000;
@@ -100,11 +86,24 @@ int main() {
 	long long millis = (after_mil - before_mil);
 
 	long memo = mend.ru_maxrss - mstart.ru_maxrss;
-
+	
+	printf("Size of Array :- %d\n", n);
 	printf("Time Taken 1 :- %f ms\n", time_taken_clock * 1000);
 	printf("Time Taken 2 :- %llu ms\n", millis);
-	printf("Memory Used :- %ld KB\n", memo);
+	printf("Memory Used :- %ld KB\n\n", memo);
 
 	free(arr);
+	
+}
+
+int main() {
+	
+	int n;
+	scanf("%d", &n);
+//	for (int i = 0; i < 5; i++) {
+		sortMerge(n);	
+//	} 
+
 	return 0;
+
 }
