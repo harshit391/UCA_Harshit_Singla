@@ -18,8 +18,10 @@ int main()
 		exit(1);
 	}
 	
-	sz = write(fd, "Hello World\n", strlen("Hello World\n"));
+	write(fd, "Hello World\n", strlen("Hello World\n"));
 	
+	close(fd);
+
 	fd = open("file.txt", O_RDONLY);
 
 	char * c = (char *) malloc (100 * sizeof(char));
