@@ -37,11 +37,11 @@
   <li>Revisiting Every Concept 7 Times</li>
   <li>1st - On the Day of Class (Basically I am Counting the Class as 1st Visit)</li>
   <li>2nd - Next Day of Class</li>
-  <li>3rd - 2 Days after the Class</li>
-  <li>4th - 4 Days after the Class</li>
-  <li>5th - 7 Days after the Class</li>
-  <li>6th - 14 Days after the Class</li>
-  <li>7th - 30 Days after the Class</li>
+  <li>3rd - 4 Days after the Class</li>
+  <li>4th - 7 Days after the Class</li>
+  <li>5th - 14 Days after the Class</li>
+  <li>6th - 30 Days after the Class</li>
+  <li>7th - 45 Days after the Class</li>
 </ul>
 <h5>Feel Free to create a copy of sheet and Start Revising by your convinience</h5>
 <h5>Also It will automatically Highlights the Topics to Revise for tommorow So That You can keep track what to revise tommorow</h5>
