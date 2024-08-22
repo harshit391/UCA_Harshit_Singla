@@ -2,14 +2,17 @@
 
 int swap(int n)
 {
+	/* Step 1 -  Mask to Store the Swapped Values*/
+	int mask = ~(-1 << 4);
 	
-	int lower_mask = ~(-1 << 4);
+	/* Step 2 - It will Store the Right side of 4 bits 0101 in the form 0101 0000 as left side  */
+	int left_side = (n & mask) << 4; 
 
-	int lower_nibble = (n & lower_mask) << 4;
-
-	int upper_nibble = (n & (lower_mask << 4)) >> 4;
-
-	return lower_nibble | upper_nibble;
+	/* Step 3 - It will Store the Left side of 4 bits 1101 in the form 0000 1101 as right side */
+	int right_side  = (n & (mask << 4)) >> 4;
+	
+	/* Step 4 - At Last we combine the left_side = 0101 0000 and right_side = 0000 1101  */
+	return right_side | left_side;
 }
 
 void binary(int  n)
