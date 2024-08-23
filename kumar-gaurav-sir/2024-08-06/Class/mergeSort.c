@@ -24,7 +24,7 @@ void merge(int arr[], int aux[], int left, int mid, int right) {
 			arr[k] = aux[i++];
 		}
 		else {
-			arr[k] = arr[j++];
+			arr[k] = aux[j++];
 		}
 	}
 }
@@ -78,6 +78,8 @@ void test_simple_input() {
 	for (int i = 0; i < 5; i++) {
 		assert(arr[i] == expected[i]);
 	}
+
+	printf("All Test Cases passed\n");
 }
 
 // Main Function
