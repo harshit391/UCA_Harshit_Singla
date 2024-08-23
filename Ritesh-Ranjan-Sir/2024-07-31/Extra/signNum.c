@@ -2,10 +2,13 @@
 
 int sol1(int x) {
 	
+	/* Finding the Sign of Number */
 	int sign = x >> 31;
-	
-	int mask = (( x | ~x + 1 ) >> 31) & 1;
 
+	/* Created a Mask of Number */
+	int mask = (( x | ~x + 1 ) >> 31) & 1;
+	
+	/* Combining the Sign with Mask  */
 	return sign | mask;
 }
 
