@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
-void map(int *arr, int n, int rem)
+void map(int *arr, int n, int rem, char * out)
 {
 	char * mp = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	
@@ -17,26 +18,22 @@ void map(int *arr, int n, int rem)
 	if (rem > 3)
 		len++;
 
-	int size = n + len + 1;
-
-	char ans[100];
-
 	for (int i = 0; i < n; i++)
 	{
-		ans[i] = mp[arr[i]];
+		out[i] = mp[arr[i]];
 	}	
 
 	for (int i = 0; i < len; i++)
 	{
-		ans[n + i] = '=';
+		out[n + i] = '=';
 	}
 
-	ans[n + len] = '\0';
+	out[n + len] = '\0';
 
-	printf("%s\n", ans);
+	printf("Answer Cameout :- %s\n", out);
 }
 
-void group(char * arr, int n)
+void group(char * arr, char * out,  int n)
 {
 	int i = 0;
 
@@ -74,12 +71,12 @@ void group(char * arr, int n)
 		
 	int rem = n - (size * 6) - 1;	
 
-	map(res, size, rem);
+	map(res, size, rem, out);
 
 	free(res);
 }
 
-void encode(char in[], int n)
+void encode(char in[], char out[],  int n)
 {
 	int size = n * 8 + 1;
 	char * arr = (char *) malloc (size * sizeof(char));
@@ -98,20 +95,68 @@ void encode(char in[], int n)
 
 	arr[k] = '\0';
 		
-	group(arr, size);
+	group(arr, out, size);
 
 	free(arr);
 }
 
+/* Thank you very much Harshpreet You made my Work Really Easy :) */
+void testCases()
+{
+
+	char out[10000];
+
+    	// Test case 1: "Harsh"
+    	encode("Harsh", out, strlen("Harsh"));
+    	printf("Test case 1: %s\n", out);
+    	assert(strcmp(out, "SGFyc2g=") == 0);
+
+    	// Test case 2: "Hello"
+    	encode("Hello", out, strlen("Hello"));
+    	printf("Test case 2: %s\n", out);
+    	assert(strcmp(out, "SGVsbG8=") == 0);
+
+    	// Test case 3: "Base64"
+    	encode("Base64", out, strlen("Base64"));
+    	printf("Test case 3: %s\n", out);
+    	assert(strcmp(out, "QmFzZTY0") == 0);
+
+   	 // Test case 4: "Test"
+    	encode("Test", out, strlen("Test"));
+    	printf("Test case 4: %s\n", out);
+    	assert(strcmp(out, "VGVzdA==") == 0);
+
+    	// Test case 5: "Test1"
+    	encode("Test1", out, strlen("Test1"));
+    	printf("Test case 5: %s\n", out);
+    	assert(strcmp(out, "VGVzdDE=") == 0);
+
+    	// Test case 6: Empty string
+    	encode("", out, strlen(""));
+    	printf("Test case 6: %s\n", out);
+    	assert(strcmp(out, "") == 0);
+
+    	// Test case 7: "Base64 encoding"
+    	encode("Base64 encoding", out, strlen("Base64 encoding"));
+    	printf("Test case 7: %s\n", out);
+    	assert(strcmp(out, "QmFzZTY0IGVuY29kaW5n") == 0);
+
+    	printf("All test cases passed!\n");
+}
+
 int main()
 {
+	testCases();
+
 	char input[100];
+	
+	char output[100];
 
 	scanf("%[^\n]%*c", input);
 
 	int size = strlen(input);
 
-	encode(input, size);
+	encode(input, output, size);
 
 	return 0;
 }
