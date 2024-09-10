@@ -1,5 +1,5 @@
 class searchRotated {
-    public int searchOneGo(int[] nums, int target) 
+    public static int search(int[] nums, int target) 
     {
         
         int start = 0;
@@ -41,6 +41,13 @@ class searchRotated {
         }
 
         return -1;
+    }
+
+    public static void main(String[] args)
+    {
+    	int x = search(new int [] {2, 2, 2, 3, 3, 1, 1}, 1);
+
+	System.out.println(x);
     }
 
 
