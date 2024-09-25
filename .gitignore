@@ -1,5 +1,7 @@
-**/a.out
+**/*.out
 *.class
+
+*.o
 
 ./Authentucation-System-C
 ./TripTally
