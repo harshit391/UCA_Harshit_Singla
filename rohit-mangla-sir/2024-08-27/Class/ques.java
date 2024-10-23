@@ -1,3 +1,4 @@
+package Class;
 public class ques
 {
 	public static void helper(int m, int n, int i, int j)

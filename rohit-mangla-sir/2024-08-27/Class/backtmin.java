@@ -1,3 +1,4 @@
+package Class;
 public class backtmin
 {
 	public static boolean valid(int[][] matrix, int i, int j)
