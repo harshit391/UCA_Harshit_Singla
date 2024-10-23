@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Reverse 
 {
     	public static int reverse(int x) 

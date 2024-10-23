@@ -1,5 +1,3 @@
-import java.util.*;
-
 class ques {
 
 	public static int index(int[] arr) {

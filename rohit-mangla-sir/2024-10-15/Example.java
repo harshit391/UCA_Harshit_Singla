@@ -1,5 +1,3 @@
-import java.util.*;
-
 interface B
 {
 	public int add(int a, int b);
@@ -10,7 +8,7 @@ interface A
 	public int add(int a, int b);
 }
 
-class Codechef implements A , B
+class Example implements A , B
 {
 	public int add(int a, int b)
 	{
@@ -19,6 +17,10 @@ class Codechef implements A , B
 
 	public static void main(String[] args)
 	{
-		System.out.println("Hello");
+		A ex = new Example();
+
+		int ans = ex.add(2, 4);
+
+		System.out.println(ans);
 	}
 }

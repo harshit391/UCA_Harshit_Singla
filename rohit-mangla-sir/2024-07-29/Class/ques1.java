@@ -1,5 +1,3 @@
-import java.util.*;
-
 class ques1 {
 
 	private static int fruit(int[] arr) {
