@@ -1,15 +1,17 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-public class BST
+public class BinarySearchTreeWordCount<Key extends Comparable<Key>, Value>
 {
 	class Node
 	{
-        String key;
-        Integer value;
+        Key key;
+        Value value;
         Node left;
         Node right;
 
-        Node(String key, Integer value)
+        Node(Key key, Value value)
         {
             this.key = key;
             this.value = value;
@@ -20,17 +22,17 @@ public class BST
 
     Node root;
 
-    BST()
+    BinarySearchTreeWordCount()
     {
         this.root = null;
     }
 
-    public Integer get(String key)
+    public Value get(Key key)
     {
         return get(root, key);
     }
     
-    private Integer get(Node x, String key)
+    private Value get(Node x, Key key)
     {
         if (x == null) return null;
         
@@ -50,12 +52,12 @@ public class BST
         }
     }
 
-    public void put(String key, Integer value)
+    public void put(Key key, Value value)
     {
         root = put(root, key, value);     
     }
 
-    private Node put(Node x, String key, Integer value)
+    private Node put(Node x, Key key, Value value)
     {
         if (x == null) return new Node(key, value);
 
@@ -73,7 +75,7 @@ public class BST
 
     public static void main(String[] args) throws IOException
     {
-		BinarySearchTreeWordCount binarySearchTreeWordCount = new BinarySearchTreeWordCount();
+		BinarySearchTreeWordCount<String, Integer> binarySearchTreeWordCount = new BinarySearchTreeWordCount<>();
 
 		int count = 0;
 		String ans = "";		
