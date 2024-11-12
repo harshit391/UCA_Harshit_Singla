@@ -92,7 +92,7 @@ public class BST
 			{
 				if (word.length() < 10) continue;
 
-				Integer curr_count = binarySearchTreeWordCount.get(word);
+				Integer curr_count = (Integer) binarySearchTreeWordCount.get(word);
 
 				if (curr_count != null)
 				{

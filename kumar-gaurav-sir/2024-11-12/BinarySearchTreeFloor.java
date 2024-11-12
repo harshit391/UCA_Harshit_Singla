@@ -112,10 +112,10 @@ public class BinarySearchTreeFloor<Key extends Comparable<Key>, Value>
 
         assert (bst.get(1) == 6);
 
-        assert (bst.floor(5) == 3);
-        assert (bst.floor(3) == 1);
-        assert (bst.floor(7) == 5);
-        assert (bst.floor(9) == 7);
+        assert (bst.floor(4) == 3);
+        assert (bst.floor(2) == 1);
+        assert (bst.floor(6) == 5);
+        assert (bst.floor(8) == 7);
 
         System.out.println("Test Cases Passed");
     }
