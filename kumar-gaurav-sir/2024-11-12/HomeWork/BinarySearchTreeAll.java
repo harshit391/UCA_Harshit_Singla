@@ -84,20 +84,20 @@ public class BinarySearchTreeAll<Key extends Comparable<Key>, Value>
 
         if (c == 0) return x;
 
-        if (c > 0) return ceil(key, x.left);
+        if (c > 0) return ceil(key, x.right);
 
-        Node right = ceil(key, x.right);
+        Node left = ceil(key, x.left);
 
-        if (right == null) return x;
+        if (left == null) return x;
 
-        return right;
+        return left;
     }
 
-    public Node ceil(Key key)
+    public Key ceil(Key key)
     {
         Node ans = ceil(key, root);
         if (ans == null) return null;
-        return ans;
+        return ans.key;
     }
 
     /* Put Method */
@@ -141,11 +141,9 @@ public class BinarySearchTreeAll<Key extends Comparable<Key>, Value>
 
         int c = key.compareTo(x.key);
 
-        if (c == 0) return x.count;
+        if (c > 0) return  1 + size(x.left) + rank(key, x.right);
 
-        if (c < 0) return rank(key, x.left);
-
-        return 1 + size(x.left) + size(x.right);
+        else return rank(key, x.left);
     }
 
     public int rank(Key key)
@@ -153,31 +151,114 @@ public class BinarySearchTreeAll<Key extends Comparable<Key>, Value>
         return rank(key, root);
     }
 
+    /* Delete a Node in BST */
+    private Node deleteNode(Node x, Key key)
+    {
+        if (x == null) return null;
+
+        x.count -= 1;
+
+        int c = key.compareTo(x.key);
+
+        if (c < 0)
+        {
+            x.left = deleteNode(x.left, key);
+        }
+        else if (c > 0)
+        {
+            x.right = deleteNode(x.right, key);
+        }
+        else
+        {
+            if (x.left == null) return x.right;
+
+            else if (x.right == null) return x.left;
+
+            else
+            {
+                Node curr = x.right;
+
+                while (curr.left != null)
+                {
+                    curr = curr.left;
+                }
+
+                x.key = curr.key;
+                x.value = curr.value;
+
+                x.right = deleteNode(x.right, x.key);
+            }
+        }
+
+        return x;
+    }
+
+    public void deleteNode(Key key)
+    {
+        root = deleteNode(root, key);
+    }
+
     public static void main(String[] args)
     {
         BinarySearchTreeAll<Integer, Integer> bst = new BinarySearchTreeAll<>();
 
-        bst.put(5, 3);
-        bst.put(3, 5);
+        bst.put(5, 24);
 
-        bst.put(1, 6);
+        bst.put(3, 8);
+        bst.put(1, 9);
+        bst.put(4, 17);
 
-        bst.put(7, 3);
-        bst.put(9, 1);
+        bst.put(7, 7);
+        bst.put(6, 9);
+        bst.put(9, 10);
 
-        assert (bst.get(7) == 3);
-        assert (bst.get(11) == null);
+        /*      5
+        *     /   \
+        *    3     7
+        *   / \   / \
+        * 1    4 6   9
+        * */
 
-        assert (bst.get(1) == 6);
+        /* Test Cases Get */
+        assert (bst.get(5) == 24);
+        assert (bst.get(7) == 7);
+        assert (bst.get(12) == null);
+        assert (bst.get(3) == 8);
+        assert (bst.get(4) == 17);
+        assert (bst.get(1) == 9);
+        assert (bst.get(6) == 9);
 
-        assert (bst.floor(4) == 3);
+        /* Test Cases Floor */
+        assert (bst.floor(4) == 4);
         assert (bst.floor(2) == 1);
-        assert (bst.floor(6) == 5);
+        assert (bst.floor(6) == 6);
         assert (bst.floor(8) == 7);
 
-        assert (bst.size() == 5);
+        /* Test Cases Ceil */
+        assert (bst.ceil(2) == 3);
+        assert (bst.ceil(8) == 9);
+        assert (bst.ceil(6) == 6);
+        assert (bst.ceil(4) == 4);
 
-        System.out.println("Test Cases Passed");
+        /* Size of Tree Test Case */
+        assert (bst.size() == 7);
+
+        /* Rank of Tree Test Case */
+        assert (bst.rank(5) == 3);
+        assert (bst.rank(3) == 1);
+        assert (bst.rank(7) == 5);
+        assert (bst.rank(4) == 2);
+
+        /* Delete a Node in BST */
+        bst.deleteNode(3);
+
+        assert (bst.size() == 6);
+        assert (bst.rank(5) == 2);
+        assert (bst.floor(3) == 1);
+        assert (bst.ceil(3) == 4);
+        assert (bst.get(3) == null);
+
+        System.out.println("Damn, All Test Cases Passed !!");
     }
 }
 
