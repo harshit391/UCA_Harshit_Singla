@@ -1,4 +1,16 @@
-class Solution 
+class ListNode
+{
+    int val;
+    ListNode next;
+
+    ListNode(int x)
+    {
+        val = x;
+        next = null;
+    }
+}
+
+public class Merge_Two_Sorted_List_Recursion
 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) 
     {
@@ -22,5 +34,9 @@ class Solution
         }
 
         return list1;
+    }
+
+    public static void main(String[] args) {
+
     }
 }
