@@ -14,6 +14,9 @@ public class TestingAVL {
         b.insert(2, "two");
 
         System.out.println(b.height()==7);
+        b.display();
+
+        System.out.println("====================================================================");
 
         /* Setting up an AVL Tree Height Based */
         AVLTreeHeight<Integer, String> avlTree = new AVLTreeHeight<>();
@@ -27,6 +30,9 @@ public class TestingAVL {
         avlTree.insert(2, "two");
 
         System.out.println(avlTree.height()==3);
+        avlTree.display();
+
+        System.out.println("====================================================================");
 
         /* Setting up an AVL Tree Size Based */
         AVLTreeSize<Integer, String> avlTree2 = new AVLTreeSize<>();
@@ -40,6 +46,7 @@ public class TestingAVL {
         avlTree2.insert(2, "two");
 
         System.out.println(avlTree2.height()==4);
+        avlTree2.display();
 
     }
 }

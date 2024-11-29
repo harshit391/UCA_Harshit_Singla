@@ -104,4 +104,33 @@ public class AVLTreeSize<K extends Comparable<K>, V>
 
         return node;
     }
+
+    public void display()
+    {
+        display(root, 0);
+    }
+
+    private void display(Node node, int level)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        display(node.right, level + 1);
+
+        if (level != 0)
+        {
+            for (int i = 0; i < level - 1; i++)
+            {
+                System.out.print("|\t\t");
+            }
+            System.out.println("|------->" + node.k+"->"+node.v);
+        }
+        else
+        {
+            System.out.println(node.k+"->"+node.v);
+        }
+        display(node.left, level + 1);
+    }
 }
