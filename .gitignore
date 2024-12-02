@@ -3,7 +3,6 @@
 
 *.o
 
-./Authentucation-System-C
-./TripTally
+*.iml
 
 ./out
