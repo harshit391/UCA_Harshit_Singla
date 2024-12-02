@@ -8,8 +8,11 @@ public class Main
 
         for (int i = 0; i < 10; i++)
         {
-            new Depositor(myBank).start();
-            new Withdrawer(myBank).start();
+            Depositor dep = new Depositor(myBank);
+            Withdrawer wd = new Withdrawer(myBank);
+
+            dep.start();
+            wd.start();
         }
     }
 }
