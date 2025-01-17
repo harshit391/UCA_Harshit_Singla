@@ -100,7 +100,7 @@ public class RBT<K extends Comparable<K>, V> {
 
         if (cmp == 0) return node;
 
-        else if (cmp < 0) return get(node.left, key);
+        else if (cmp > 0) return get(node.left, key);
 
         return get(node.right, key);
     }
